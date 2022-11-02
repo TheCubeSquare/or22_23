@@ -1,0 +1,949 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 15.0
+-- Dumped by pg_dump version 15.0
+
+-- Started on 2022-11-02 04:52:59
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3371 (class 1262 OID 16398)
+-- Name: nogometne_utakmice; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE nogometne_utakmice WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'English_Europe.1252';
+
+
+ALTER DATABASE nogometne_utakmice OWNER TO postgres;
+
+\connect nogometne_utakmice
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 217 (class 1259 OID 16424)
+-- Name: first_team_players; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.first_team_players (
+    matchid integer NOT NULL,
+    playerid integer NOT NULL
+);
+
+
+ALTER TABLE public.first_team_players OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 16399)
+-- Name: match; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.match (
+    matchid integer NOT NULL,
+    first_team character varying(50) NOT NULL,
+    second_team character varying(50) NOT NULL,
+    first_team_goals integer NOT NULL,
+    second_team_goals integer NOT NULL,
+    date date NOT NULL,
+    stadium character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.match OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 16470)
+-- Name: match_matchid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.match ALTER COLUMN matchid ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.match_matchid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 215 (class 1259 OID 16404)
+-- Name: player; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.player (
+    playerid integer NOT NULL,
+    player_name character varying(50) NOT NULL,
+    player_surname character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.player OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 16469)
+-- Name: player_playerid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.player ALTER COLUMN playerid ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.player_playerid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 218 (class 1259 OID 16439)
+-- Name: second_team_players; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.second_team_players (
+    matchid integer NOT NULL,
+    playerid integer NOT NULL
+);
+
+
+ALTER TABLE public.second_team_players OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 16409)
+-- Name: substitution; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.substitution (
+    substitutionid integer NOT NULL,
+    outgoingid integer NOT NULL,
+    incomingid integer NOT NULL
+);
+
+
+ALTER TABLE public.substitution OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 16471)
+-- Name: substitution_substitutionid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.substitution ALTER COLUMN substitutionid ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.substitution_substitutionid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 219 (class 1259 OID 16454)
+-- Name: substitutions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.substitutions (
+    matchid integer NOT NULL,
+    substitutionid integer NOT NULL
+);
+
+
+ALTER TABLE public.substitutions OWNER TO postgres;
+
+--
+-- TOC entry 3360 (class 0 OID 16424)
+-- Dependencies: 217
+-- Data for Name: first_team_players; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.first_team_players VALUES (1, 24);
+INSERT INTO public.first_team_players VALUES (1, 25);
+INSERT INTO public.first_team_players VALUES (1, 26);
+INSERT INTO public.first_team_players VALUES (1, 27);
+INSERT INTO public.first_team_players VALUES (1, 28);
+INSERT INTO public.first_team_players VALUES (1, 29);
+INSERT INTO public.first_team_players VALUES (1, 30);
+INSERT INTO public.first_team_players VALUES (1, 31);
+INSERT INTO public.first_team_players VALUES (1, 32);
+INSERT INTO public.first_team_players VALUES (1, 33);
+INSERT INTO public.first_team_players VALUES (1, 34);
+INSERT INTO public.first_team_players VALUES (2, 46);
+INSERT INTO public.first_team_players VALUES (2, 47);
+INSERT INTO public.first_team_players VALUES (2, 48);
+INSERT INTO public.first_team_players VALUES (2, 49);
+INSERT INTO public.first_team_players VALUES (2, 50);
+INSERT INTO public.first_team_players VALUES (2, 51);
+INSERT INTO public.first_team_players VALUES (2, 52);
+INSERT INTO public.first_team_players VALUES (2, 53);
+INSERT INTO public.first_team_players VALUES (2, 54);
+INSERT INTO public.first_team_players VALUES (2, 55);
+INSERT INTO public.first_team_players VALUES (2, 56);
+INSERT INTO public.first_team_players VALUES (3, 68);
+INSERT INTO public.first_team_players VALUES (3, 69);
+INSERT INTO public.first_team_players VALUES (3, 70);
+INSERT INTO public.first_team_players VALUES (3, 71);
+INSERT INTO public.first_team_players VALUES (3, 72);
+INSERT INTO public.first_team_players VALUES (3, 73);
+INSERT INTO public.first_team_players VALUES (3, 74);
+INSERT INTO public.first_team_players VALUES (3, 75);
+INSERT INTO public.first_team_players VALUES (3, 76);
+INSERT INTO public.first_team_players VALUES (3, 77);
+INSERT INTO public.first_team_players VALUES (3, 78);
+INSERT INTO public.first_team_players VALUES (4, 90);
+INSERT INTO public.first_team_players VALUES (4, 91);
+INSERT INTO public.first_team_players VALUES (4, 92);
+INSERT INTO public.first_team_players VALUES (4, 93);
+INSERT INTO public.first_team_players VALUES (4, 94);
+INSERT INTO public.first_team_players VALUES (4, 95);
+INSERT INTO public.first_team_players VALUES (4, 96);
+INSERT INTO public.first_team_players VALUES (4, 97);
+INSERT INTO public.first_team_players VALUES (4, 98);
+INSERT INTO public.first_team_players VALUES (4, 99);
+INSERT INTO public.first_team_players VALUES (4, 100);
+INSERT INTO public.first_team_players VALUES (5, 112);
+INSERT INTO public.first_team_players VALUES (5, 113);
+INSERT INTO public.first_team_players VALUES (5, 114);
+INSERT INTO public.first_team_players VALUES (5, 115);
+INSERT INTO public.first_team_players VALUES (5, 116);
+INSERT INTO public.first_team_players VALUES (5, 117);
+INSERT INTO public.first_team_players VALUES (5, 118);
+INSERT INTO public.first_team_players VALUES (5, 119);
+INSERT INTO public.first_team_players VALUES (5, 120);
+INSERT INTO public.first_team_players VALUES (5, 121);
+INSERT INTO public.first_team_players VALUES (5, 122);
+INSERT INTO public.first_team_players VALUES (6, 134);
+INSERT INTO public.first_team_players VALUES (6, 135);
+INSERT INTO public.first_team_players VALUES (6, 136);
+INSERT INTO public.first_team_players VALUES (8, 136);
+INSERT INTO public.first_team_players VALUES (6, 137);
+INSERT INTO public.first_team_players VALUES (6, 138);
+INSERT INTO public.first_team_players VALUES (9, 138);
+INSERT INTO public.first_team_players VALUES (6, 139);
+INSERT INTO public.first_team_players VALUES (6, 140);
+INSERT INTO public.first_team_players VALUES (6, 141);
+INSERT INTO public.first_team_players VALUES (6, 142);
+INSERT INTO public.first_team_players VALUES (6, 143);
+INSERT INTO public.first_team_players VALUES (6, 144);
+INSERT INTO public.first_team_players VALUES (7, 153);
+INSERT INTO public.first_team_players VALUES (7, 154);
+INSERT INTO public.first_team_players VALUES (7, 155);
+INSERT INTO public.first_team_players VALUES (7, 156);
+INSERT INTO public.first_team_players VALUES (7, 157);
+INSERT INTO public.first_team_players VALUES (7, 158);
+INSERT INTO public.first_team_players VALUES (7, 159);
+INSERT INTO public.first_team_players VALUES (7, 160);
+INSERT INTO public.first_team_players VALUES (7, 161);
+INSERT INTO public.first_team_players VALUES (7, 162);
+INSERT INTO public.first_team_players VALUES (7, 163);
+INSERT INTO public.first_team_players VALUES (8, 175);
+INSERT INTO public.first_team_players VALUES (8, 176);
+INSERT INTO public.first_team_players VALUES (8, 177);
+INSERT INTO public.first_team_players VALUES (8, 178);
+INSERT INTO public.first_team_players VALUES (8, 179);
+INSERT INTO public.first_team_players VALUES (8, 180);
+INSERT INTO public.first_team_players VALUES (8, 181);
+INSERT INTO public.first_team_players VALUES (8, 182);
+INSERT INTO public.first_team_players VALUES (8, 183);
+INSERT INTO public.first_team_players VALUES (8, 184);
+INSERT INTO public.first_team_players VALUES (9, 195);
+INSERT INTO public.first_team_players VALUES (9, 196);
+INSERT INTO public.first_team_players VALUES (9, 197);
+INSERT INTO public.first_team_players VALUES (9, 198);
+INSERT INTO public.first_team_players VALUES (9, 199);
+INSERT INTO public.first_team_players VALUES (9, 200);
+INSERT INTO public.first_team_players VALUES (9, 201);
+INSERT INTO public.first_team_players VALUES (9, 202);
+INSERT INTO public.first_team_players VALUES (9, 203);
+INSERT INTO public.first_team_players VALUES (9, 204);
+INSERT INTO public.first_team_players VALUES (10, 215);
+INSERT INTO public.first_team_players VALUES (10, 216);
+INSERT INTO public.first_team_players VALUES (10, 217);
+INSERT INTO public.first_team_players VALUES (10, 218);
+INSERT INTO public.first_team_players VALUES (10, 219);
+INSERT INTO public.first_team_players VALUES (10, 220);
+INSERT INTO public.first_team_players VALUES (10, 221);
+INSERT INTO public.first_team_players VALUES (10, 222);
+INSERT INTO public.first_team_players VALUES (10, 223);
+INSERT INTO public.first_team_players VALUES (10, 224);
+INSERT INTO public.first_team_players VALUES (10, 225);
+
+
+--
+-- TOC entry 3357 (class 0 OID 16399)
+-- Dependencies: 214
+-- Data for Name: match; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (1, 'Chelsea', 'Liverpool', 4, 4, '2009-04-14', 'Stamford Bridge');
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (2, 'Liverpool', 'Alaves', 5, 4, '2001-05-16', 'BVB Stadion Dortmund');
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (3, 'France', 'Portugal', 2, 1, '2000-06-28', 'King Baudouin Stadium');
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (4, 'Brazil', 'England', 1, 0, '1970-06-07', 'Jalisco Stadium');
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (5, 'West Germany', 'Hungary', 3, 2, '1954-07-04', 'Wankdorf Stadium');
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (6, 'Milan', 'Liverpool', 3, 3, '2005-05-25', 'Ataturk Olimpiyat Stadyumu');
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (7, 'Argentina', 'England', 2, 1, '1986-06-22', 'Estadio Azteca');
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (8, 'Manchester United', 'Bayern', 2, 1, '1999-05-26', 'Camp Nou');
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (9, 'Italy', 'Brazil', 3, 3, '1997-06-08', 'Stade de Gerland');
+INSERT INTO public.match OVERRIDING SYSTEM VALUE VALUES (10, 'Italy', 'West Germany', 4, 3, '1970-06-17', 'Estadio Azteca');
+
+
+--
+-- TOC entry 3358 (class 0 OID 16404)
+-- Dependencies: 215
+-- Data for Name: player; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (24, 'Petr', 'Cech');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (25, 'Ashley', 'Cole');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (26, '', 'Alex');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (27, 'Ricardo', 'Carvalho');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (28, 'Branislav', 'Ivanovic');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (29, 'Frank', 'Lampard');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (30, 'Michael', 'Essien');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (31, 'Michael', 'Ballack');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (32, 'Florent', 'Malouda');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (34, 'Salomon', 'Kalou');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (35, 'Pepe', 'Reina');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (36, 'Alvaro', 'Arbeola');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (37, 'Jamie', 'Carragher');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (38, 'Martin', 'Skrtel');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (39, 'Fabio', 'Aurelio');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (40, 'Lucas', 'Leiva');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (41, 'Xabi', 'Alonso');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (42, 'Javier', 'Mascherano');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (43, 'Fernando', 'Torres');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (44, 'Dirk', 'Kuyt');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (45, 'Yossi', 'Benayoun');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (46, 'Sander', 'Westerveld');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (47, 'Stephane', 'Henchoz');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (48, 'Markus', 'Babbel');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (49, 'Sami', 'Hyypia');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (50, 'Jamie', 'Carragher');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (51, 'Danny', 'Murphy');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (52, 'Didi', 'Hamann');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (53, 'Steven', 'Gerrard');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (54, 'Gary', 'McAllister');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (55, 'Emile', 'Heskey');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (56, 'Michael', 'Owen');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (57, 'Martin', 'Herrera');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (58, 'Javi', 'Moreno');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (59, 'Cosmin', 'Contra');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (60, 'Jordi', 'Cruyff');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (61, 'Dan', 'Eggen');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (62, 'Ivan', 'Tomic');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (63, 'Antonio', 'Karmona');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (64, 'Hermes', 'Desio');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (65, 'Oscar', 'Tellez');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (66, 'Martin', 'Astudillo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (67, 'Delfi', 'Geli');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (68, 'Fabien', 'Barthez');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (69, 'Lilian', 'Thuram');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (70, 'Marcel', 'Desailly');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (71, 'Laurent', 'Blanc');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (72, 'Bixente', 'Lizarazu');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (73, 'Patrick', 'Vieira');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (74, 'Didier', 'Deschamps');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (75, 'Emmanuel', 'Petit');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (76, 'Zinedine', 'Zidane');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (77, 'Nicolas', 'Anelka');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (78, 'Thierry', 'Henry');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (79, 'Vitor', 'Baia');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (80, 'Abel', 'Xavier');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (81, 'Fernando', 'Couto');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (82, 'Jorge', 'Costa');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (83, '', 'Dimas');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (84, '', 'Costinha');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (85, 'Jose', 'Luis Vidigal');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (86, 'Sergio', 'Conceicao');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (87, 'Rui', 'Costa');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (88, 'Luis', 'Figo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (89, 'Nuno', 'Gomes');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (90, '', 'Brito');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (91, 'Carlos', 'Alberto Torres');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (92, '', 'Clodoaldo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (93, '', 'Everaldo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (94, '', 'Tostao');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (95, '', 'Felix');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (96, 'Wilson', 'Piazza');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (97, '', 'Rivellino');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (98, '', 'Jairzinho');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (99, '', 'Caju');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (100, '', 'Pele');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (101, 'Geoff', 'Hurst');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (102, 'Martin', 'Stanford Peters');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (103, 'Alan', 'Ball Jr.');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (104, 'Brian', 'Labone');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (105, 'Gordon', 'Banks');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (106, 'Tommy', 'Wright');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (107, 'Francis', 'Henry Lee');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (108, 'Terence', 'Cooper');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (109, 'Alan', 'Mullery');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (110, 'Bobby', 'Charlton');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (111, 'Bobby', 'Moore');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (112, 'Toni', 'Turek');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (113, 'Josef', 'Posipal');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (114, 'Werner', 'Liebrich');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (115, 'Werner', 'Kohlmeyer');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (116, 'Horst', 'Eckel');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (117, 'Karl', 'Mai');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (118, 'Helmut', 'Rahn');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (119, 'Max', 'Morlock');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (120, 'Ottmar', 'Walter');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (121, 'Fritz', 'Walter');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (122, 'Hans', 'Schafer');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (123, 'Gyula', 'Grosics');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (124, 'Jeno', 'Buzanszky');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (125, 'Gyula', 'Lorant');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (126, 'Mihaly', 'Lantos');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (127, 'Jozsef', 'Boszik');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (128, 'Nandor', 'Hidegkuti');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (129, 'Jozsef', 'Zakarias');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (130, 'Zoltan', 'Czibor');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (131, 'Sandor', 'Kocsis');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (132, 'Ferenc', 'Puskas');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (133, 'Mihaly', 'Toth');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (134, '', 'Dida');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (135, '', 'Cafu');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (136, 'Jaap', 'Stam');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (137, 'Alessandro', 'Nesta');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (138, 'Paolo', 'Maldini');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (139, 'Andrea', 'Pirlo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (140, 'Gennaro', 'Gattuso');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (141, 'Clarence', 'Seedorf');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (142, '', 'Kaka');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (143, 'Andriy', 'Shevchenko');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (144, 'Hernan', 'Crespo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (145, 'Jerzy', 'Dudek');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (146, 'Steve', 'Finnan');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (147, 'Djimi', 'Traore');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (149, 'Luis', 'Garcia');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (150, 'John', 'Arne Riise');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (151, 'Harry', 'Kewell');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (152, 'Milan', 'Baros');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (153, 'Nery', 'Pumpido');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (154, 'Jose', 'Luis Brown');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (155, 'Jose', 'Luis Cuciuffo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (156, 'Oscar', 'Ruggeri');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (157, 'Ricardo', 'Giusti');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (158, 'Julio', 'Olartcoechea');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (159, 'Sergio', 'Batista');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (160, 'Jorge', 'Burruchaga');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (161, 'Hector', 'Enrique');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (162, 'Diego', 'Maradona');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (163, 'Jorge', 'Valdano');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (164, 'Peter', 'Shilton');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (33, 'Didier', 'Drogba');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (165, 'Gary', 'M. Stevens');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (166, 'Terry', 'Fenwick');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (167, 'Terry', 'Butcher');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (168, 'Kenny', 'Sansom');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (169, 'Glenn', 'Hoddle');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (170, 'Peter', 'Reid');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (171, 'Trevor', 'Steven');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (172, 'Steve', 'Hodge');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (173, 'Peter', 'Beardsley');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (174, 'Gary', 'Lineker');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (175, 'Peter', 'Schmeichel');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (176, 'Gary', 'Neville');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (177, 'Ronny', 'Johnsen');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (178, 'Denis', 'Irwin');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (179, 'Ryan', 'Giggs');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (180, 'David', 'Beckham');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (181, 'Nicky', 'Butt');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (182, 'Jesper', 'Blomqvist');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (183, 'Dwight', 'Yorke');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (184, 'Andy', 'Cole');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (185, 'Oliver', 'Kahn');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (186, 'Lothar', 'Matthaus');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (187, 'Thomas', 'Linke');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (188, 'Samuel', 'Kuffour');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (189, 'Michael', 'Tarnat');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (190, 'Stefan', 'Effenberg');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (191, 'Jens', 'Jeremies');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (192, 'Mario', 'Basler');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (193, 'Carsten', 'Jancker');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (194, 'Alexander', 'Zickler');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (195, 'Gianluca', 'Pagliuca');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (196, 'Alessandro', 'Costacurta');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (197, 'Fabio', 'Cannavaro');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (198, 'Christian', 'Panucci');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (199, 'Dino', 'Baggio');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (200, 'Roberto', 'Di Matteo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (201, 'Attilio', 'Lombardo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (202, 'Demetrio', 'Albertini');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (203, 'Christian', 'Vieri');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (204, 'Alessandro', 'Del Piero');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (205, 'Claudio', 'Taffarel');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (206, 'Celio', 'Silva');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (207, '', 'Aldair');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (208, 'Roberto', 'Carlos');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (209, 'Mauro', 'Silva');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (210, '', 'Dunga');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (211, '', 'Leonardo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (212, '', 'Ronaldo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (213, '', 'Denilson');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (214, '', 'Romario');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (215, 'Enrico', 'Albertosi');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (216, 'Tarcisio', 'Burgnich');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (217, 'Giacinto', 'Facchetti');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (218, 'Pierluigi', 'Cera');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (219, 'Roberto', 'Rosato');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (220, 'Mario', 'Bertini');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (221, 'Sandro', 'Mazzola');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (222, 'Giancarlo', 'De Sisti');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (223, 'Angelo', 'Domenghini');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (224, 'Roberto', 'Boninsegna');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (225, 'Gigi', 'Riva');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (226, 'Sepp', 'Maier');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (227, 'Berti', 'Vegts');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (228, 'Karl-Heinz', 'Schnellinger');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (229, 'Willi', 'Schulz');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (230, 'Bernd', 'Patzke');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (231, 'Franz', 'Beckenbauer');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (232, 'Wolfgang', 'Overath');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (233, 'Jurgen', 'Grabowski');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (234, 'Uwe', 'Seeler');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (235, 'Gerd', 'Muller');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (236, 'Hannes', 'Lohr');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (237, 'Albert', 'Riera');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (238, 'David', 'Ngog');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (239, 'Ryan', 'Babel');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (240, 'Franco', 'Di Santo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (241, 'Vladimir', 'Smicer');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (242, 'Robbie', 'Fowler');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (243, 'Patrik', 'Berger');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (244, 'Ivan', 'Alonso');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (245, 'Mocellin', 'Magno');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (246, 'Juan', 'Pablo');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (247, 'Sylvain', 'Wiltord');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (248, 'Robert', 'Pires');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (249, 'David', 'Trezeguet');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (250, 'Paulo', 'Bento');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (252, 'Rui', 'Jorge');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (253, 'Roberto', 'Lopes de Miranda');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (254, 'Colin', 'Bell');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (255, 'Jeff', 'Astle');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (256, '', 'Serginho');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (257, 'Jon', 'Dahl Tomasson');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (258, 'Dietmar', 'Hamann');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (259, 'Djibril', 'Cisse');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (260, 'Carlos', 'Daniel Tapia');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (261, 'Chris', 'Waddle');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (262, 'John', 'Barnes');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (263, 'Teddy', 'Sheringham');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (264, 'Ole', 'Gunnar Solskjaer');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (265, 'Mehmet', 'Scholl');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (266, 'Thorsten', 'Fink');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (267, 'Hasan', 'Salihamidzic');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (268, 'Flavio', 'Conceicao');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (269, 'Angelo', 'Di Livio');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (270, 'Diego', 'Fuser');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (271, 'Filippo', 'Inzaghi');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (272, 'Gianni', 'Rivera');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (273, 'Fabrizio', 'Poletti');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (274, 'Reinhard', 'Libuda');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (275, 'Sigfried', 'Held');
+INSERT INTO public.player OVERRIDING SYSTEM VALUE VALUES (251, 'Joao', 'Pinto');
+
+
+--
+-- TOC entry 3361 (class 0 OID 16439)
+-- Dependencies: 218
+-- Data for Name: second_team_players; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.second_team_players VALUES (1, 35);
+INSERT INTO public.second_team_players VALUES (1, 36);
+INSERT INTO public.second_team_players VALUES (1, 37);
+INSERT INTO public.second_team_players VALUES (1, 38);
+INSERT INTO public.second_team_players VALUES (1, 39);
+INSERT INTO public.second_team_players VALUES (1, 40);
+INSERT INTO public.second_team_players VALUES (1, 41);
+INSERT INTO public.second_team_players VALUES (1, 42);
+INSERT INTO public.second_team_players VALUES (1, 43);
+INSERT INTO public.second_team_players VALUES (1, 44);
+INSERT INTO public.second_team_players VALUES (1, 45);
+INSERT INTO public.second_team_players VALUES (8, 48);
+INSERT INTO public.second_team_players VALUES (6, 49);
+INSERT INTO public.second_team_players VALUES (6, 50);
+INSERT INTO public.second_team_players VALUES (6, 53);
+INSERT INTO public.second_team_players VALUES (2, 57);
+INSERT INTO public.second_team_players VALUES (2, 58);
+INSERT INTO public.second_team_players VALUES (2, 59);
+INSERT INTO public.second_team_players VALUES (2, 60);
+INSERT INTO public.second_team_players VALUES (2, 61);
+INSERT INTO public.second_team_players VALUES (2, 62);
+INSERT INTO public.second_team_players VALUES (2, 63);
+INSERT INTO public.second_team_players VALUES (2, 64);
+INSERT INTO public.second_team_players VALUES (2, 65);
+INSERT INTO public.second_team_players VALUES (2, 66);
+INSERT INTO public.second_team_players VALUES (2, 67);
+INSERT INTO public.second_team_players VALUES (3, 79);
+INSERT INTO public.second_team_players VALUES (3, 80);
+INSERT INTO public.second_team_players VALUES (3, 81);
+INSERT INTO public.second_team_players VALUES (3, 82);
+INSERT INTO public.second_team_players VALUES (3, 83);
+INSERT INTO public.second_team_players VALUES (3, 84);
+INSERT INTO public.second_team_players VALUES (3, 85);
+INSERT INTO public.second_team_players VALUES (3, 86);
+INSERT INTO public.second_team_players VALUES (3, 87);
+INSERT INTO public.second_team_players VALUES (3, 88);
+INSERT INTO public.second_team_players VALUES (3, 89);
+INSERT INTO public.second_team_players VALUES (4, 101);
+INSERT INTO public.second_team_players VALUES (4, 102);
+INSERT INTO public.second_team_players VALUES (4, 103);
+INSERT INTO public.second_team_players VALUES (4, 104);
+INSERT INTO public.second_team_players VALUES (4, 105);
+INSERT INTO public.second_team_players VALUES (4, 106);
+INSERT INTO public.second_team_players VALUES (4, 107);
+INSERT INTO public.second_team_players VALUES (4, 108);
+INSERT INTO public.second_team_players VALUES (4, 109);
+INSERT INTO public.second_team_players VALUES (4, 110);
+INSERT INTO public.second_team_players VALUES (4, 111);
+INSERT INTO public.second_team_players VALUES (5, 123);
+INSERT INTO public.second_team_players VALUES (5, 124);
+INSERT INTO public.second_team_players VALUES (5, 125);
+INSERT INTO public.second_team_players VALUES (5, 126);
+INSERT INTO public.second_team_players VALUES (5, 127);
+INSERT INTO public.second_team_players VALUES (5, 128);
+INSERT INTO public.second_team_players VALUES (5, 129);
+INSERT INTO public.second_team_players VALUES (5, 130);
+INSERT INTO public.second_team_players VALUES (5, 131);
+INSERT INTO public.second_team_players VALUES (5, 132);
+INSERT INTO public.second_team_players VALUES (5, 133);
+INSERT INTO public.second_team_players VALUES (9, 135);
+INSERT INTO public.second_team_players VALUES (6, 145);
+INSERT INTO public.second_team_players VALUES (6, 146);
+INSERT INTO public.second_team_players VALUES (6, 147);
+INSERT INTO public.second_team_players VALUES (6, 149);
+INSERT INTO public.second_team_players VALUES (6, 150);
+INSERT INTO public.second_team_players VALUES (6, 151);
+INSERT INTO public.second_team_players VALUES (6, 152);
+INSERT INTO public.second_team_players VALUES (7, 164);
+INSERT INTO public.second_team_players VALUES (7, 165);
+INSERT INTO public.second_team_players VALUES (7, 166);
+INSERT INTO public.second_team_players VALUES (7, 167);
+INSERT INTO public.second_team_players VALUES (7, 168);
+INSERT INTO public.second_team_players VALUES (7, 169);
+INSERT INTO public.second_team_players VALUES (7, 170);
+INSERT INTO public.second_team_players VALUES (7, 171);
+INSERT INTO public.second_team_players VALUES (7, 172);
+INSERT INTO public.second_team_players VALUES (7, 173);
+INSERT INTO public.second_team_players VALUES (7, 174);
+INSERT INTO public.second_team_players VALUES (8, 185);
+INSERT INTO public.second_team_players VALUES (8, 186);
+INSERT INTO public.second_team_players VALUES (8, 187);
+INSERT INTO public.second_team_players VALUES (8, 188);
+INSERT INTO public.second_team_players VALUES (8, 189);
+INSERT INTO public.second_team_players VALUES (8, 190);
+INSERT INTO public.second_team_players VALUES (8, 191);
+INSERT INTO public.second_team_players VALUES (8, 192);
+INSERT INTO public.second_team_players VALUES (8, 193);
+INSERT INTO public.second_team_players VALUES (8, 194);
+INSERT INTO public.second_team_players VALUES (9, 205);
+INSERT INTO public.second_team_players VALUES (9, 206);
+INSERT INTO public.second_team_players VALUES (9, 207);
+INSERT INTO public.second_team_players VALUES (9, 208);
+INSERT INTO public.second_team_players VALUES (9, 209);
+INSERT INTO public.second_team_players VALUES (9, 210);
+INSERT INTO public.second_team_players VALUES (9, 211);
+INSERT INTO public.second_team_players VALUES (9, 212);
+INSERT INTO public.second_team_players VALUES (9, 213);
+INSERT INTO public.second_team_players VALUES (9, 214);
+INSERT INTO public.second_team_players VALUES (10, 226);
+INSERT INTO public.second_team_players VALUES (10, 227);
+INSERT INTO public.second_team_players VALUES (10, 228);
+INSERT INTO public.second_team_players VALUES (10, 229);
+INSERT INTO public.second_team_players VALUES (10, 230);
+INSERT INTO public.second_team_players VALUES (10, 231);
+INSERT INTO public.second_team_players VALUES (10, 232);
+INSERT INTO public.second_team_players VALUES (10, 233);
+INSERT INTO public.second_team_players VALUES (10, 234);
+INSERT INTO public.second_team_players VALUES (10, 235);
+INSERT INTO public.second_team_players VALUES (10, 236);
+INSERT INTO public.second_team_players VALUES (6, 41);
+
+
+--
+-- TOC entry 3359 (class 0 OID 16409)
+-- Dependencies: 216
+-- Data for Name: substitution; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (1, 34, 77);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (2, 42, 237);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (3, 43, 238);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (4, 36, 239);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (5, 33, 240);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (6, 47, 241);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (7, 55, 242);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (8, 56, 243);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (11, 61, 244);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (12, 66, 245);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (13, 58, 246);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (14, 77, 247);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (15, 75, 248);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (17, 78, 249);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (18, 83, 252);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (19, 85, 250);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (21, 87, 251);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (22, 94, 253);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (23, 107, 254);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (24, 110, 255);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (26, 140, 87);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (27, 141, 256);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (28, 144, 257);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (30, 146, 258);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (31, 151, 241);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (32, 152, 259);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (33, 160, 260);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (34, 170, 261);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (35, 171, 262);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (36, 182, 263);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (38, 184, 264);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (39, 186, 266);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (40, 192, 267);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (41, 194, 265);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (45, 209, 268);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (46, 138, 269);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (47, 199, 270);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (48, 203, 271);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (49, 219, 273);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (50, 221, 272);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (51, 230, 275);
+INSERT INTO public.substitution OVERRIDING SYSTEM VALUE VALUES (52, 236, 274);
+
+
+--
+-- TOC entry 3362 (class 0 OID 16454)
+-- Dependencies: 219
+-- Data for Name: substitutions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.substitutions VALUES (1, 1);
+INSERT INTO public.substitutions VALUES (1, 2);
+INSERT INTO public.substitutions VALUES (1, 3);
+INSERT INTO public.substitutions VALUES (1, 4);
+INSERT INTO public.substitutions VALUES (1, 5);
+INSERT INTO public.substitutions VALUES (2, 6);
+INSERT INTO public.substitutions VALUES (2, 7);
+INSERT INTO public.substitutions VALUES (2, 8);
+INSERT INTO public.substitutions VALUES (2, 11);
+INSERT INTO public.substitutions VALUES (2, 12);
+INSERT INTO public.substitutions VALUES (2, 13);
+INSERT INTO public.substitutions VALUES (3, 14);
+INSERT INTO public.substitutions VALUES (3, 15);
+INSERT INTO public.substitutions VALUES (3, 17);
+INSERT INTO public.substitutions VALUES (3, 18);
+INSERT INTO public.substitutions VALUES (3, 19);
+INSERT INTO public.substitutions VALUES (3, 21);
+INSERT INTO public.substitutions VALUES (4, 22);
+INSERT INTO public.substitutions VALUES (4, 23);
+INSERT INTO public.substitutions VALUES (4, 24);
+INSERT INTO public.substitutions VALUES (6, 26);
+INSERT INTO public.substitutions VALUES (6, 27);
+INSERT INTO public.substitutions VALUES (6, 28);
+INSERT INTO public.substitutions VALUES (6, 30);
+INSERT INTO public.substitutions VALUES (6, 31);
+INSERT INTO public.substitutions VALUES (6, 32);
+INSERT INTO public.substitutions VALUES (7, 33);
+INSERT INTO public.substitutions VALUES (7, 34);
+INSERT INTO public.substitutions VALUES (7, 35);
+INSERT INTO public.substitutions VALUES (8, 36);
+INSERT INTO public.substitutions VALUES (8, 38);
+INSERT INTO public.substitutions VALUES (8, 39);
+INSERT INTO public.substitutions VALUES (8, 40);
+INSERT INTO public.substitutions VALUES (8, 41);
+INSERT INTO public.substitutions VALUES (9, 45);
+INSERT INTO public.substitutions VALUES (9, 46);
+INSERT INTO public.substitutions VALUES (9, 47);
+INSERT INTO public.substitutions VALUES (9, 48);
+INSERT INTO public.substitutions VALUES (10, 49);
+INSERT INTO public.substitutions VALUES (10, 50);
+INSERT INTO public.substitutions VALUES (10, 51);
+INSERT INTO public.substitutions VALUES (10, 52);
+
+
+--
+-- TOC entry 3372 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: match_matchid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.match_matchid_seq', 10, true);
+
+
+--
+-- TOC entry 3373 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: player_playerid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.player_playerid_seq', 275, true);
+
+
+--
+-- TOC entry 3374 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: substitution_substitutionid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.substitution_substitutionid_seq', 52, true);
+
+
+--
+-- TOC entry 3202 (class 2606 OID 16428)
+-- Name: first_team_players first_team_players_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.first_team_players
+    ADD CONSTRAINT first_team_players_pkey PRIMARY KEY (matchid, playerid);
+
+
+--
+-- TOC entry 3196 (class 2606 OID 16403)
+-- Name: match match_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.match
+    ADD CONSTRAINT match_pkey PRIMARY KEY (matchid);
+
+
+--
+-- TOC entry 3198 (class 2606 OID 16408)
+-- Name: player player_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.player
+    ADD CONSTRAINT player_pkey PRIMARY KEY (playerid);
+
+
+--
+-- TOC entry 3204 (class 2606 OID 16443)
+-- Name: second_team_players second_team_players_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.second_team_players
+    ADD CONSTRAINT second_team_players_pkey PRIMARY KEY (matchid, playerid);
+
+
+--
+-- TOC entry 3200 (class 2606 OID 16413)
+-- Name: substitution substitution_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.substitution
+    ADD CONSTRAINT substitution_pkey PRIMARY KEY (substitutionid);
+
+
+--
+-- TOC entry 3206 (class 2606 OID 16458)
+-- Name: substitutions substitutions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.substitutions
+    ADD CONSTRAINT substitutions_pkey PRIMARY KEY (matchid, substitutionid);
+
+
+--
+-- TOC entry 3209 (class 2606 OID 16429)
+-- Name: first_team_players first_team_players_matchid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.first_team_players
+    ADD CONSTRAINT first_team_players_matchid_fkey FOREIGN KEY (matchid) REFERENCES public.match(matchid);
+
+
+--
+-- TOC entry 3210 (class 2606 OID 16434)
+-- Name: first_team_players first_team_players_playerid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.first_team_players
+    ADD CONSTRAINT first_team_players_playerid_fkey FOREIGN KEY (playerid) REFERENCES public.player(playerid);
+
+
+--
+-- TOC entry 3211 (class 2606 OID 16444)
+-- Name: second_team_players second_team_players_matchid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.second_team_players
+    ADD CONSTRAINT second_team_players_matchid_fkey FOREIGN KEY (matchid) REFERENCES public.match(matchid);
+
+
+--
+-- TOC entry 3212 (class 2606 OID 16449)
+-- Name: second_team_players second_team_players_playerid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.second_team_players
+    ADD CONSTRAINT second_team_players_playerid_fkey FOREIGN KEY (playerid) REFERENCES public.player(playerid);
+
+
+--
+-- TOC entry 3207 (class 2606 OID 16419)
+-- Name: substitution substitution_incomingid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.substitution
+    ADD CONSTRAINT substitution_incomingid_fkey FOREIGN KEY (incomingid) REFERENCES public.player(playerid);
+
+
+--
+-- TOC entry 3208 (class 2606 OID 16414)
+-- Name: substitution substitution_outgoingid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.substitution
+    ADD CONSTRAINT substitution_outgoingid_fkey FOREIGN KEY (outgoingid) REFERENCES public.player(playerid);
+
+
+--
+-- TOC entry 3213 (class 2606 OID 16459)
+-- Name: substitutions substitutions_matchid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.substitutions
+    ADD CONSTRAINT substitutions_matchid_fkey FOREIGN KEY (matchid) REFERENCES public.match(matchid);
+
+
+--
+-- TOC entry 3214 (class 2606 OID 16464)
+-- Name: substitutions substitutions_substitutionid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.substitutions
+    ADD CONSTRAINT substitutions_substitutionid_fkey FOREIGN KEY (substitutionid) REFERENCES public.substitution(substitutionid);
+
+
+-- Completed on 2022-11-02 04:53:00
+
+--
+-- PostgreSQL database dump complete
+--
+
