@@ -2,7 +2,7 @@
 - author: Matija Bognar
 - version: 1.0
 - language: english
-- attributes:
+- match attributes:
 	- matchid
 	- first_team
 	- first_team_goals
@@ -13,6 +13,14 @@
 	- substitutions
 	- date
 	- stadium
+- player attributes:
+	- playerid
+	- player_name
+	- player_surname
+-substitution attributes:
+	- substitutionid
+	- outgoingid
+	- incomingid
 - number of tables: 5
 - available formats: csv, json
 - object count: 10
