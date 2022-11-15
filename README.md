@@ -17,7 +17,7 @@
 	- playerid
 	- player_name
 	- player_surname
--substitution attributes:
+- substitution attributes:
 	- substitutionid
 	- outgoingid
 	- incomingid
