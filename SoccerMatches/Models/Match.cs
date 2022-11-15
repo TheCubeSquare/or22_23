@@ -12,8 +12,5 @@ namespace SoccerMatches.Models
         public string? Stadium { get; set; }
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        public Player[] FirstTeamPlayers { get; set; }
-        public Player[] SecondTeamPlayers { get; set; }
-        public Player[,] Substitutions { get; set; }
     }
 }

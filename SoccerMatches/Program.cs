@@ -10,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IDbService, DbService>();
-builder.Services.AddScoped<IMatchService, PlayerService>();
+builder.Services.AddScoped<IPlayerService, PlayerService>();
+builder.Services.AddScoped<IMatchService, MatchService>();
 
 var app = builder.Build();
 

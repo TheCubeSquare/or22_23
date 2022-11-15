@@ -8,9 +8,9 @@ namespace SoccerMatches.Controllers
 	[Route("[controller]")]
 	public class PlayerController : Controller
 	{
-		private readonly IMatchService _playerService;
+		private readonly IPlayerService _playerService;
 
-		public PlayerController(IMatchService playerService)
+		public PlayerController(IPlayerService playerService)
 		{
 			_playerService = playerService;
 		}
