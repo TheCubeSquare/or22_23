@@ -47,3 +47,12 @@ C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Reposi
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\obj\Debug\net6.0\SoccerMatches.pdb
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\obj\Debug\net6.0\SoccerMatches.genruntimeconfig.cache
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\obj\Debug\net6.0\ref\SoccerMatches.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\bin\Debug\net6.0\Auth0.AspNetCore.Authentication.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

@@ -2,7 +2,11 @@ using Dapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using SoccerMatches.Services;
+using Auth0.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
 
 DefaultTypeMap.MatchNamesWithUnderscores = true;
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +16,17 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IDbService, DbService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddScoped<IMatchService, MatchService>();
+//builder.Services
+//        .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//        .AddJwtBearer(options =>
+//        {
+//            options.Authority = domain;
+//            options.Audience = Configuration["Auth0:Audience"];
+//            options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+//            {
+//                NameClaimType = ClaimTypes.NameIdentifier
+//            };
+//        });
 
 var app = builder.Build();
 
@@ -28,6 +43,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
