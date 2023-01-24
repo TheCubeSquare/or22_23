@@ -14,6 +14,7 @@ using Auth0.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using SoccerMatches_revised.Support;
+using Microsoft.AspNetCore.Identity;
 
 namespace SoccerMatches_revised
 {
@@ -33,15 +34,8 @@ namespace SoccerMatches_revised
         {
             services.ConfigureSameSiteNoneCookies();
 
-            services
-                .AddAuth0WebAppAuthentication(options => {
-                    options.Domain = Configuration["Auth0:Domain"];
-                    options.ClientId = Configuration["Auth0:ClientId"];
-                    options.ClientSecret = Configuration["Auth0:ClientSecret"];
-                    options.CallbackPath = null;
-                });
             services.AddDbContext<SoccerMatchContext>(opt =>
-               opt.UseInMemoryDatabase("SoccerMatch"));
+               opt.UseNpgsql(Configuration.GetConnectionString("SoccerMatches")));
             services.AddControllersWithViews();
             services.AddMvc();
         }
@@ -73,7 +67,6 @@ namespace SoccerMatches_revised
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

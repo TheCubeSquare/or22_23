@@ -9,7 +9,7 @@ namespace SoccerMatches_revised.Models
         {
         }
 
-        public DbSet<SoccerMatch> SoccerMatches { get; set; }
+        public DbSet<Match> match { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Substitution> Substitutions { get; set; }
     }

@@ -26,16 +26,16 @@ namespace SoccerMatches_revised.Controllers
 
         // GET: api/SoccerMatches
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SoccerMatch>>> GetSoccerMatches()
+        public async Task<ActionResult<IEnumerable<Match>>> GetSoccerMatches()
         {
-            return await _context.SoccerMatches.ToListAsync();
+            return await _context.match.ToListAsync();
         }
 
         // GET: api/SoccerMatches/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SoccerMatch>> GetSoccerMatch(int id)
+        public async Task<ActionResult<Match>> GetSoccerMatch(int id)
         {
-            var soccerMatch = await _context.SoccerMatches.FindAsync(id);
+            var soccerMatch = await _context.match.FindAsync(id);
 
             if (soccerMatch == null)
             {
@@ -48,49 +48,49 @@ namespace SoccerMatches_revised.Controllers
         [HttpGet("{id}/firstteam")]
         public async Task<ActionResult<string>> GetFirstTeam(int id)
         {
-            var soccerMatch = await _context.SoccerMatches.FindAsync(id);
+            var soccerMatch = await _context.match.FindAsync(id);
 
             if (soccerMatch == null)
             {
                 return NotFound();
             }
 
-            return soccerMatch.FirstTeam;
+            return soccerMatch.first_team;
         }
 
         [HttpGet("{id}/secondteam")]
         public async Task<ActionResult<string>> GetSecondTeam(int id)
         {
-            var soccerMatch = await _context.SoccerMatches.FindAsync(id);
+            var soccerMatch = await _context.match.FindAsync(id);
 
             if (soccerMatch == null)
             {
                 return NotFound();
             }
 
-            return soccerMatch.SecondTeam;
+            return soccerMatch.second_team;
         }
 
         [HttpGet("{id}/stadium")]
         public async Task<ActionResult<string>> GetStadium(int id)
         {
-            var soccerMatch = await _context.SoccerMatches.FindAsync(id);
+            var soccerMatch = await _context.match.FindAsync(id);
 
             if (soccerMatch == null)
             {
                 return NotFound();
             }
 
-            return soccerMatch.Stadium;
+            return soccerMatch.stadium;
         }
 
         // PUT: api/SoccerMatches/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSoccerMatch(int id, SoccerMatch soccerMatch)
+        public async Task<IActionResult> PutSoccerMatch(int id, Match soccerMatch)
         {
-            if (id != soccerMatch.Id)
+            if (id != soccerMatch.matchid)
             {
                 return BadRequest();
             }
@@ -120,25 +120,25 @@ namespace SoccerMatches_revised.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<SoccerMatch>> PostSoccerMatch(SoccerMatch soccerMatch)
+        public async Task<ActionResult<Match>> PostSoccerMatch(Match soccerMatch)
         {
-            _context.SoccerMatches.Add(soccerMatch);
+            _context.match.Add(soccerMatch);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetSoccerMatch), new { id = soccerMatch.Id }, soccerMatch);
+            return CreatedAtAction(nameof(GetSoccerMatch), new { id = soccerMatch.matchid }, soccerMatch);
         }
 
         // DELETE: api/SoccerMatches/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<SoccerMatch>> DeleteSoccerMatch(int id)
+        public async Task<ActionResult<Match>> DeleteSoccerMatch(int id)
         {
-            var soccerMatch = await _context.SoccerMatches.FindAsync(id);
+            var soccerMatch = await _context.match.FindAsync(id);
             if (soccerMatch == null)
             {
                 return NotFound();
             }
 
-            _context.SoccerMatches.Remove(soccerMatch);
+            _context.match.Remove(soccerMatch);
             await _context.SaveChangesAsync();
 
             return soccerMatch;
@@ -146,7 +146,7 @@ namespace SoccerMatches_revised.Controllers
 
         private bool SoccerMatchExists(int id)
         {
-            return _context.SoccerMatches.Any(e => e.Id == id);
+            return _context.match.Any(e => e.matchid == id);
         }
 
         [HttpGet("openapi")]

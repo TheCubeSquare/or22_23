@@ -139,8 +139,6 @@ C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Reposi
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\obj\Debug\netcoreapp3.1\SoccerMatches_revised.TagHelpers.input.cache
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\obj\Debug\netcoreapp3.1\SoccerMatches_revised.TagHelpers.output.cache
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\obj\Debug\netcoreapp3.1\SoccerMatches_revised.RazorCoreGenerate.cache
-C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
-C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -165,3 +163,9 @@ C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Reposi
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\obj\Debug\netcoreapp3.1\SoccerMatches_revised.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\bin\Debug\netcoreapp3.1\Humanizer.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\bin\Debug\netcoreapp3.1\Npgsql.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Matija\Desktop\Matija\Faks\Otvoreno racunarstvo\Repository_22_23\Repository\SoccerMatches_revised\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll

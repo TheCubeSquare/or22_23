@@ -1,4 +1,4 @@
-﻿@model SoccerMatches_revised.Models.SoccerMatch
+﻿@model SoccerMatches_revised.Models.Match
 
 @{
     ViewBag.Title = "New Soccer Match";
@@ -10,45 +10,45 @@
     <div asp-validation-summary="All"></div>
 
     <div class="form-group">
-        <label asp-for="Id"></label>
-        <div><span asp-validation-for="Id" class="text-danger"></span></div>
-        <input asp-for="Id" class="form-control" />
+        <label asp-for="matchid"></label>
+        <div><span asp-validation-for="matchid" class="text-danger"></span></div>
+        <input asp-for="matchid" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="FirstTeam"></label>
-        <div><span asp-validation-for="FirstTeam" class="text-danger"></span></div>
-        <input asp-for="FirstTeam" class="form-control" />
+        <label asp-for="first_team"></label>
+        <div><span asp-validation-for="first_team" class="text-danger"></span></div>
+        <input asp-for="first_team" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="FirstTeamGoals"></label>
-        <div><span asp-validation-for="FirstTeamGoals" class="text-danger"></span></div>
-        <input asp-for="FirstTeamGoals" class="form-control" />
+        <label asp-for="first_team_goals"></label>
+        <div><span asp-validation-for="first_team_goals" class="text-danger"></span></div>
+        <input asp-for="first_team_goals" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="SecondTeam"></label>
-        <div><span asp-validation-for="SecondTeam" class="text-danger"></span></div>
-        <input asp-for="SecondTeam" class="form-control" />
+        <label asp-for="second_team"></label>
+        <div><span asp-validation-for="second_team" class="text-danger"></span></div>
+        <input asp-for="second_team" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="SecondTeamGoals"></label>
-        <div><span asp-validation-for="SecondTeamGoals" class="text-danger"></span></div>
-        <input asp-for="SecondTeamGoals" class="form-control" />
+        <label asp-for="second_team_goals"></label>
+        <div><span asp-validation-for="second_team_goals" class="text-danger"></span></div>
+        <input asp-for="second_team_goals" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Date"></label>
-        <div><span asp-validation-for="Date" class="text-danger"></span></div>
-        <input asp-for="Date" class="form-control" />
+        <label asp-for="date"></label>
+        <div><span asp-validation-for="date" class="text-danger"></span></div>
+        <input asp-for="date" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="Stadium"></label>
-        <div><span asp-validation-for="Stadium" class="text-danger"></span></div>
-        <input asp-for="Stadium" class="form-control" />
+        <label asp-for="stadium"></label>
+        <div><span asp-validation-for="stadium" class="text-danger"></span></div>
+        <input asp-for="stadium" class="form-control" />
     </div>
 
     <div class="text-center">
