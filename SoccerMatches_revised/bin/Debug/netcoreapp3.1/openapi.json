@@ -1,0 +1,123 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SoccerMatches api",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Matija Bognar",
+      "email": "mb51413@fer.hr"
+    },
+    "license": {
+      "name": "Attribution 4.0 International (CC BY 4.0)",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+    "paths": {
+        "/api/SoccerMatches": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "JSON collection of all soccer matches."
+                    }
+                }
+            }
+        },
+        "/api/SoccerMatches/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Single soccer match defined by ID."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
+        "/api/SoccerMatches/{id}/firstteam": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "First team that played the game defined by ID."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
+        "/api/SoccerMatches/{id}/secondteam": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Second team that played the game defined by ID."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
+        "/api/SoccerMatches/{id}/stadium": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Stadium where the game was played defined by ID."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
+        "/api/SoccerMatches/openapi": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "JSON representation of this OpenApi."
+                    }
+                }
+            }
+        }
+    }
+}

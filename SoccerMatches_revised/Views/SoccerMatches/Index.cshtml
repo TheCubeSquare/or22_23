@@ -1,0 +1,118 @@
+﻿@model SoccerMatches_revised.ViewModels.SoccerMatchesViewModel
+
+@{
+    ViewBag.Title = "Soccer matches";
+}
+
+<h2>Soccer Matches List</h2>
+
+<a asp-action="Create"
+   asp-route-page="@Model.PagingInfo.CurrentPage"
+   asp-route-sort="@Model.PagingInfo.Sort"
+   asp-route-ascending="@Model.PagingInfo.Ascending">Add Soccer Match</a>
+
+<pager page-info="@Model.PagingInfo" page-action="Index" page-title="Input desired page"
+       class="float-end">
+</pager>
+
+<table class="table table-sm table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a asp-route-sort="1" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 1 ? !Model.PagingInfo.Ascending : true)">
+                    ID
+                </a>
+            </th>
+
+            <th>
+                <a asp-route-sort="32" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? !Model.PagingInfo.Ascending : true)">
+                    First Team
+                </a>
+            </th>
+            <th>
+                <a asp-route-sort="3" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? !Model.PagingInfo.Ascending : true)">
+                    First Team Goals
+                </a>
+            </th>
+            <th>
+                <a asp-route-sort="4" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? !Model.PagingInfo.Ascending : true)">
+                    Second Team
+                </a>
+            </th>
+            <th>
+                <a asp-route-sort="5" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? !Model.PagingInfo.Ascending : true)">
+                    Second Team Goals
+                </a>
+            </th>
+            <th>
+                <a asp-route-sort="6" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? !Model.PagingInfo.Ascending : true)">
+                    Date
+                </a>
+            </th>
+            <th>
+                <a asp-route-sort="7" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? !Model.PagingInfo.Ascending : true)">
+                    Stadium
+                </a>
+            </th>
+
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var izv in Model.SoccerMatches)
+        {
+        <tr>
+            <td class="text-left">@izv.Id</td>
+            <td class="text-left">@izv.FirstTeam</td>
+            <td class="text-left">@izv.FirstTeamGoals</td>
+            <td class="text-left">@izv.SecondTeam</td>
+            <td class="text-left">@izv.SecondTeamGoals</td>
+            <td class="text-left">@izv.Date</td>
+            <td class="text-left">@izv.Stadium</td>
+
+            <td>
+                <a asp-action="Details"
+                   asp-route-id="@izv.Id"
+                   asp-route-page="@Model.PagingInfo.CurrentPage"
+                   asp-route-sort="@Model.PagingInfo.Sort"
+                   asp-route-ascending="@Model.PagingInfo.Ascending"
+                   class="btn btn-sm btn-success"
+                   title="Details">Details</a>
+            </td>
+
+            <td>
+                <a asp-action="Edit"
+                   asp-route-id="@izv.Id"
+                   asp-route-page="@Model.PagingInfo.CurrentPage"
+                   asp-route-sort="@Model.PagingInfo.Sort"
+                   asp-route-ascending="@Model.PagingInfo.Ascending"
+                   class="btn btn-sm btn-success"
+                   title="Edit">Edit</a>
+            </td>
+
+            <td>
+                <form asp-action="Delete" method="post"
+                      asp-route-id="@izv.Id"
+                      asp-route-page="@Model.PagingInfo.CurrentPage"
+                      asp-route-sort="@Model.PagingInfo.Sort"
+                      asp-route-ascending="@Model.PagingInfo.Ascending"
+                      onclick="return confirm('Are you sure?')">
+                    <button class="btn btn-sm btn-danger delete"
+                            title="Delete">
+                        Delete
+                    </button>
+                </form>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+<script src="~/js/pager.js" asp-append-version="true"></script>
+}

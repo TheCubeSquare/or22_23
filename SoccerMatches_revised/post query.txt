@@ -1,0 +1,23 @@
+{
+    "FirstTeam": "Dinamo",
+    "FirstTeamGoals": 2,
+    "SecondTeam": "Arsenal",
+    "SecondTeamGoals": 1,
+    "Stadium": "Maksimir",
+    "Date": {
+        "days": 0,
+        "hours": 0,
+        "milliseconds": 0,
+        "minutes": 0,
+        "seconds": 1,
+        "ticks": 10000000,
+        "totalDays": 1.1574074074074073E-05,
+        "totalHours": 0.0002777777777777778,
+        "totalMilliseconds": 1000,
+        "totalMinutes": 0.016666666666666666,
+        "totalSeconds": 1
+    },
+    "FirstTeamPlayers": [],
+    "SecondTeamPlayers": [],
+    "Substitutions": []
+}
